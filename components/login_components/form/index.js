@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { TextInput, Text } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 import styles from './style';
 
@@ -10,11 +9,9 @@ export default function LoginForm() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const navigation = useNavigation();
-  const [showEyes, setShowEyes] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
-    setShowEyes(!showEyes);
   };
 
   const handleForgotPassword = () => {
@@ -43,16 +40,14 @@ export default function LoginForm() {
         theme={{ colors: { primary: '#0055ff', underlineColor: 'transparent', placeholder: 'black' } }}
         right={
           <TextInput.Icon
-            name={() => (
-              <TouchableOpacity onPress={togglePasswordVisibility}>
-                <Icon name={showPassword ? "eye" : "eye-off"} size={24} color={showEyes ? "#0055ff" : "black"} />
-              </TouchableOpacity>
-            )}
+            icon={showPassword ? "eye" : "eye-off"}
+            onPress={togglePasswordVisibility}
+            color={showPassword ? "#0055ff" : "black"}
           />
         }
       />
       <TouchableOpacity onPress={handleForgotPassword} style={form.forgotPasswordButton}>
-        <Text style={form.forgotPasswordText}>Forgot password?</Text>
+        <Text style={form.forgotPasswordText}>forgot password?</Text>
       </TouchableOpacity>
     </View>
   );

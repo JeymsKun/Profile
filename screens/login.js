@@ -6,15 +6,10 @@ import Login from '../components/login_components/login/index';
 
 export default function LoginScreen() {
 
-  const handleLogin = (email, password) => {
-    console.log('Email:', email);
-    console.log('Password:', password);
-  };
-
   return (
     <View style={styles.container}>
-      <Title />
-      <Form onLogin={handleLogin} />
+      <Title/>
+      <Form/>
       <Login/>
     </View>
   );

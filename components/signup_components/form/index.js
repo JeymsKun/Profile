@@ -1,27 +1,22 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { TextInput } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './style';
 
 export default function SignUpForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [showEyes, setShowEyes] = useState(false);
-  const [showConfirmEyes, setShowConfirmEyes] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
-    setShowEyes(!showEyes);
-  };
-
+  }
+  
   const toggleConfirmPasswordVisibility = () => {
     setShowConfirmPassword(!showConfirmPassword);
-    setShowConfirmEyes(!showConfirmEyes);
-  };
-
+  }
 
   return (
     <View style={form.container}>
@@ -45,29 +40,25 @@ export default function SignUpForm() {
         theme={{ colors: { primary: '#0055ff', underlineColor: 'transparent', placeholder: 'black' } }}
         right={
           <TextInput.Icon
-            name={() => (
-              <TouchableOpacity onPress={togglePasswordVisibility}>
-                <Icon name={showPassword ? "eye" : "eye-off"} size={24} color={showEyes ? "#0055ff" : "black"} />
-              </TouchableOpacity>
-            )}
+            icon={showPassword ? "eye" : "eye-off"}
+            onPress={togglePasswordVisibility}
+            color={showPassword ? "#0055ff" : "black"}
           />
         }
       />
       <TextInput
         label="Confirm Password"
-        value={password}
-        onChangeText={setPassword}
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
         mode="outlined"
-        secureTextEntry={!showPassword}
+        secureTextEntry={!showConfirmPassword}
         style={form.input}
         theme={{ colors: { primary: '#0055ff', underlineColor: 'transparent', placeholder: 'black' } }}
         right={
           <TextInput.Icon
-            name={() => (
-              <TouchableOpacity onPress={toggleConfirmPasswordVisibility}>
-                <Icon name={showConfirmPassword ? "eye" : "eye-off"} size={24} color={showConfirmEyes ? "#0055ff" : "black"} />
-              </TouchableOpacity>
-            )}
+            icon={showConfirmPassword ? "eye" : "eye-off"}
+            onPress={toggleConfirmPasswordVisibility}
+            color={showConfirmPassword ? "#0055ff" : "black"}
           />
         }
       />
