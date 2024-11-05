@@ -1,14 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native';
-import Avatar from '../components/avatar/index';
-import Name from '../components/name/index';
-import Joined from '../components/joined/index';
-import ProfileGroup from '../components/profile_group/index';
-import SettingsGroup from '../components/settings_group/index';
-import Manage from '../components/manage/index';
-import Notification from '../components/notifications/index';
-import DarkMode from '../components/dark_mode/index';
-import SignOut from '../components/signout/index';
+import Avatar from '../components/profile_components/avatar/index';
+import Name from '../components/profile_components/name/index';
+import ProfileGroup from '../components/profile_components/profile_group/index';
+import SettingsGroup from '../components/profile_components/settings_group/index';
+import SignOut from '../components/profile_components/signout/index';
 import { useTheme } from '../ThemeContext';
 import { Dark, Light } from '../themes';
 
@@ -21,12 +17,8 @@ export default function Profile() {
       <StatusBar hidden={false} />
       <Avatar theme={currentTheme} />
       <Name theme={currentTheme} />
-      <Joined theme={currentTheme} />
       <ProfileGroup theme={currentTheme} />
-      <Manage theme={currentTheme} />
-      <SettingsGroup theme={currentTheme} />
-      <Notification theme={currentTheme} />
-      <DarkMode theme={currentTheme} toggleTheme={toggleTheme} darkMode={darkMode}/>
+      <SettingsGroup theme={currentTheme} toggleTheme={toggleTheme} darkMode={darkMode}/>
       <SignOut theme={currentTheme} />
     </View>
   );
@@ -34,7 +26,8 @@ export default function Profile() {
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
+    flex: 1,
+    justifyContent: 'center',
     padding: 20,
   },
 });

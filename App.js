@@ -1,6 +1,8 @@
-import Profile from './screens/profile';
+import React from 'react';
+import Navigation from './components/Navigation';
 import { useFonts } from 'expo-font';
-import { ThemeProvider } from './ThemeContext';;
+import { ThemeProvider } from './ThemeContext';
+import { Provider as PaperProvider } from 'react-native-paper'; 
 
 export default function App() {
   const [loadedFonts] = useFonts({
@@ -16,7 +18,9 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <Profile />
+      <PaperProvider>
+        <Navigation />
+      </PaperProvider>
     </ThemeProvider>
   );
 }
